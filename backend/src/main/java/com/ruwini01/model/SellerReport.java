@@ -1,12 +1,11 @@
 package com.ruwini01.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,23 +17,23 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-public class CartItem {
+public class SellerReport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JsonIgnore
-    private Cart cart;
+    @OneToOne
+    private Seller seller;
 
-    private Product product;
-    private String size;
-    private int quantity = 1;
-    private int mrpPrice;
-    private int sellingPrice;
-    private int discount;
-    private Long userId;
+    private Long totalEarnings = 0L;
+    private Long totalSales = 0L;
+    private Long totalRefunds = 0L;
+    private Long totalTax = 0L;
+    private Long netEarnings = 0L;
+    private Integer totalOrders = 0;
+    private Integer canceledOrders = 0;
+    private Integer totalTransactions = 0;
+
 
 }

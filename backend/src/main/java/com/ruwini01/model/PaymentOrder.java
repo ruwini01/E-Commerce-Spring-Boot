@@ -1,12 +1,17 @@
 package com.ruwini01.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.ruwini01.domain.PaymentMethod;
+import com.ruwini01.domain.PaymentOrderStatus;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,22 +24,22 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class CartItem {
+public class PaymentOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JsonIgnore
-    private Cart cart;
+    private Long amount;
+    private PaymentOrderStatus status = PaymentOrderStatus.PENDING;
+    private PaymentMethod paymentMethod;
+    private String paymentLinkId;
 
-    private Product product;
-    private String size;
-    private int quantity = 1;
-    private int mrpPrice;
-    private int sellingPrice;
-    private int discount;
-    private Long userId;
+    @ManyToOne
+    private User user;
+
+    @OneToMany
+    private Set<Order> orders = new HashSet<>();
+
 
 }
