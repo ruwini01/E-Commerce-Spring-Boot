@@ -55,7 +55,7 @@ Upon successful processing of the request, the server will respond with a JSON o
 
 ---
 
-## 📩Endpoint: Sign Up Endpoint
+## 📩 Endpoint: Sign Up Endpoint
 
 This endpoint allows users to create a new account by providing their details. It is a part of the authentication process for the application.
 
@@ -115,3 +115,64 @@ Upon a successful sign-up, the server will respond with a JSON object containing
 - The OTP must be verified correctly for the sign-up to be successful.
     
 - A successful response will return a JWT that should be stored securely for future authenticated requests.
+
+
+---
+
+## 📩 Endpoint: Sign In Endpoint
+
+This endpoint allows users to sign in to their account using an email and a one-time password (OTP). Upon successful authentication, a JSON Web Token (JWT) is returned, which can be used for subsequent requests that require authentication.
+
+### Request
+
+- **Method:** POST
+    
+- **URL:** `localhost:5454/auth/signin`
+    
+- **Content-Type:** application/json
+    
+
+#### Request Body
+
+The request body must be in JSON format and include the following parameters:
+
+- **email** (string): The email address associated with the user’s account.
+    
+- **otp** (string): The one-time password sent to the user's email for authentication.
+    
+
+**Example Request Body:**
+
+``` json
+{
+  "email": "user@example.com",
+  "otp": "123456"
+}
+
+ ```
+
+### Response
+
+On a successful request, the server responds with a status code of 200 and a JSON object containing:
+
+- **jwt** (string): The JSON Web Token for the authenticated session.
+    
+- **message** (string): A message indicating the result of the authentication attempt.
+    
+- **role** (string): The role of the authenticated user (e.g., admin, user).
+    
+
+**Example Response:**
+
+``` json
+{
+  "jwt": "your_jwt_token_here",
+  "message": "Sign in successful",
+  "role": "user"
+}
+
+ ```
+
+### Notes
+
+Ensure that the email and OTP provided in the request body match the credentials registered in the system for successful authentication.
