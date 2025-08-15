@@ -1,5 +1,6 @@
 package com.ruwini01.service;
 
+import com.ruwini01.request.LoginRequest;
 import com.ruwini01.response.AuthResponse;
 import com.ruwini01.response.SignupRequest;
 
@@ -10,4 +11,6 @@ public interface AuthService {
     void sendLoginOpt(String email) throws MessagingException;
 
     String createUser(SignupRequest req) throws Exception;
+
+    AuthResponse signin(LoginRequest req);
 }
