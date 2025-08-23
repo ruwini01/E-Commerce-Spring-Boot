@@ -176,3 +176,52 @@ On a successful request, the server responds with a status code of 200 and a JSO
 ### Notes
 
 Ensure that the email and OTP provided in the request body match the credentials registered in the system for successful authentication.
+
+
+
+
+## 📩 Endpoint: Get User Profile
+
+This endpoint retrieves the profile information of the currently authenticated user. It is a **GET** request sent to `localhost:5454/users/profile`.
+
+### Request
+
+- **Method**: GET
+    
+- **URL**: `localhost:5454/users/profile`
+    
+
+### Response
+
+Upon a successful request, the server responds with a status code of `200` and a JSON object containing the user's profile details. The structure of the response is as follows:
+
+``` json
+{
+  "id": 0,
+  "email": "",
+  "fullName": "",
+  "mobile": "",
+  "role": "",
+  "addresses": []
+}
+
+ ```
+
+#### Response Parameters:
+
+- `id` (integer): A unique identifier for the user.
+    
+- `email` (string): The email address associated with the user account.
+    
+- `fullName` (string): The full name of the user.
+    
+- `mobile` (string): The mobile number of the user.
+    
+- `role` (string): The role assigned to the user within the system.
+    
+- `addresses` (array): A list of addresses associated with the user, which may be empty if no addresses are stored.
+    
+
+### Usage
+
+To use this endpoint effectively, ensure that the user is authenticated. The response will provide essential information about the user's profile, which can be utilized for various purposes such as displaying user details in a dashboard or managing user settings.
